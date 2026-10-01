@@ -1,0 +1,76 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Be Vietnam Pro', ui-sans-serif, system-ui, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Newsreader', Georgia, 'Times New Roman', serif;
+
+  --color-paper: #f5f1e8;
+  --color-card: #fffdf8;
+  --color-ink: #17212b;
+  --color-muted: #566170;
+  --color-line: #ddd5c4;
+
+  --color-brand: #0d5c63;
+  --color-brand-ink: #083f44;
+  --color-brand-soft: #dcecea;
+
+  --color-sun: #e8a33d;
+  --color-sun-soft: #fbecc9;
+  --color-sun-ink: #7a4a07;
+
+  --color-danger: #b42318;
+  --color-danger-soft: #fde8e6;
+  --color-danger-ink: #7a1810;
+
+  --color-ok: #1f7a4d;
+  --color-ok-soft: #def2e6;
+  --color-ok-ink: #11512f;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.55;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 2px;
+  }
+  /* Ô lưới co được dưới kích thước nội dung để bảng cuộn ngang trong thẻ, không làm tràn trang trên điện thoại. */
+  .grid > * {
+    min-width: 0;
+  }
+  /* Để chữ ẩn (sr-only) trong ô bảng bị cắt cùng vùng cuộn, không đẩy rộng trang. */
+  th,
+  td {
+    position: relative;
+  }
+  button:disabled {
+    cursor: not-allowed;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    * {
+      transition: none !important;
+      animation: none !important;
+    }
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+  .paper-grain {
+    background-image: radial-gradient(rgba(23, 33, 43, 0.05) 1px, transparent 1px);
+    background-size: 18px 18px;
+  }
+}
